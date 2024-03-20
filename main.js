@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const client = new Discord.Client({ intents: [gateway] })
+const client = new Discord.Client({ intents: [] })
 const prefix = '!';
 const fs = require ('fs');
 client.commands = new Discord.Collection();
@@ -21,9 +21,8 @@ client.on('message', message =>{
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-
-    if (command === 'checkpp'){
-        client.commands.get('checkpp').execute(message, args);
+    if (command === 'priv'){
+        client.commands.get('priv').execute(message, args);
     } else if (command == 'dark'){
         client.commands.get('dark').execute(message, args);
     } else if (command == 'gate'){
@@ -31,4 +30,4 @@ client.on('message', message =>{
     }
 });
 
-client.login('ODQyMTgwNzY3NTQzMTk3Njk2.YJxj9Q.PB-cuPcZzEBxay0xiHPUWCnkcf4');
+client.login("ODQyMTgwNzY3NTQzMTk3Njk2.GS-RaT.Yv9aZAjP4NkdiElJMGsyhCdW-RryQEU5LmaYvk");

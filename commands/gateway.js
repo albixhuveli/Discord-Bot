@@ -11,6 +11,5 @@ module.exports= {
             message.member.roles.add('847325724896526397').catch(console.error);
         }
             
-
     }
 }
