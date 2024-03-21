@@ -1,19 +1,36 @@
-const Discord = require('discord.js');
-const client = new Discord.Client({ intents: [] })
+const fs = require ('node:fs');
+const path = require('node:path')
+const {Client, Collection, GatewayIntentBits, Events, } = require('discord.js');
+const client = new Client({intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,       
+    ]
+})
 const prefix = '!';
-const fs = require ('fs');
-client.commands = new Discord.Collection();
+
+client.commands = new Collection();
+const foldersPath = path.join(__dirname, 'commands');
+const commandFolders = fs.readdirSync(foldersPath);
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 for (const file of commandFiles){
     const command = require(`./commands/${file}`);
-
     client.commands.set(command.name, command);
 }
 
 client.once('ready', () => {
     console.log('bruh bot is online!');
 });
+
+client.on('messageCreate', async message => {
+    if (message.content == 'hi') {
+        await message.reply({
+            content:'hello!',
+            ephemeral: false
+        })
+    }
+})
 
 client.on('message', message =>{
     if (!message.content.startsWith(prefix) || message.author.bot) return;
@@ -30,4 +47,4 @@ client.on('message', message =>{
     }
 });
 
-client.login("ODQyMTgwNzY3NTQzMTk3Njk2.GS-RaT.Yv9aZAjP4NkdiElJMGsyhCdW-RryQEU5LmaYvk");
+client.login('ODQyMTgwNzY3NTQzMTk3Njk2.GS-RaT.Yv9aZAjP4NkdiElJMGsyhCdW-RryQEU5LmaYvk');
