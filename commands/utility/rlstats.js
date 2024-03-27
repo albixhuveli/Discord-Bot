@@ -4,7 +4,8 @@ const { SlashCommandBuilder } = require('discord.js');
 function extractPercetile(userData, gameMode = "Ranked Doubles 2v2") {
   const segments = userData['data']['segments']
 
-  let currentSeason = 28;
+  let currentSeason = 28; // implement current season
+
   let percentile = -1;
   for (var segment of segments) {
     if (segment['type'] == 'playlist'){
