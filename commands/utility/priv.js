@@ -10,6 +10,5 @@ module.exports= {
             message.channel.send('priv detected.');
         }
             
-
     }
 }
