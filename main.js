@@ -19,7 +19,6 @@ client.once('ready', () => {
     console.log('bruh bot is online!');
 });
 
-
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
@@ -40,10 +39,7 @@ for (const folder of commandFolders) {
 
 client.on('messageCreate', async message => {
     if (message.content == 'hi') {
-        await message.reply({
-            content:'hello!',
-            ephemeral: false
-        })
+        await message.reply({content:'hello!'});
     }
 })
 
@@ -68,4 +64,5 @@ client.on(Events.InteractionCreate, async interaction => {
 		}
 	}
 });
+
 client.login(token);
