@@ -1,5 +1,4 @@
 **HOW TO USE:**
-
 Create a `config.json` for your sensitive user info, copy paste this template, then fill it in with the required info: 
 
 {
@@ -11,9 +10,10 @@ Create a `config.json` for your sensitive user info, copy paste this template, t
 Launch the deploy-command file with node `deploy-command.js` to load commands
 Then proceeed to activate the bot with `node .`
 
+
 **IN DISCORD**
- - TO USE RL COMMANDS:
+ 1. TO USE RL COMMANDS:
   - use `/rl` then add your username followed by mode options.
 
- - TO USE APEX COMMANDS:
+ 2. TO USE APEX COMMANDS:
   - use `/apex` then add your username.
