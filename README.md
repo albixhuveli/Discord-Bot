@@ -13,7 +13,7 @@ Then proceeed to activate the bot with `node .`
 
 **IN DISCORD**
  1. TO USE RL COMMANDS:
-  - use `/rl` then add your username followed by mode options.
+ 	- use `/rl` then add your username followed by mode options.
 
  2. TO USE APEX COMMANDS:
-  - use `/apex` then add your username.
+ 	- use `/apex` then add your username.
