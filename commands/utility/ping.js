@@ -8,14 +8,14 @@ module.exports = {
 		.setDescription('Replies with Pong!')
 		.addStringOption(option =>
 			option
-				.setName('target')
+				.setName('test')
 				.setDescription('target word')
 				.setRequired(true)
 				),
 
 	async execute(interaction) {
-		const target = interaction.options.getString('target') ?? 'No target provided';
-		await interaction.reply({ content: 'pong! ' + target, ephemeral: true });
+		const test = interaction.options.getString('test') ?? 'No target provided';
+		await interaction.reply({ content: 'pong! ' + test, ephemeral: true });
 		await wait(30_000);
 		await interaction.deleteReply();
 	},
