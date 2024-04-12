@@ -1,4 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
+const { ytapi } = require('./config.json');
 
 // extraction from metadata
 function extractPercetile(userData, ) {
