@@ -22,3 +22,6 @@ Then proceeed to activate the bot with `node .`
 
  2. TO USE APEX COMMANDS:
  	- use `/apex` then add your username.
+ 
+ 3. TO USE YouTube COMMANDS:
+	- use `/youtube` then add video title or url.
