@@ -17,11 +17,14 @@ Then proceeed to activate the bot with `node .`
 
 
 ## IN DISCORD
- 1. TO USE RL COMMANDS:
+ 1. TO USE RocketLeague COMMANDS:
  	- use `/rl` then add your username followed by mode options.
 
- 2. TO USE APEX COMMANDS:
+ 2. TO USE Apex COMMANDS:
  	- use `/apex` then add your username.
  
  3. TO USE YouTube COMMANDS:
 	- use `/youtube` then add video title or url.
+ 
+ 4. TO Use dark screen command:
+	- use `/dark` and click the bots reply link
