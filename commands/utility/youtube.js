@@ -25,15 +25,15 @@ module.exports = {
     
         .addStringOption(option => 
             option
-                .setName('user')
-                .setDescription('user to search')
+                .setName('search')
+                .setDescription('video to search')
                 .setRequired(true)
             ), 
 
   // api call  
 	async execute(interaction) {
-    const user = interaction.options.getString('user') ?? 'No user provided';
-    const apiUrl = 'https://api.tracker.gg/api/v2/apex/standard/profile/origin/' + user
+    const search = interaction.options.getString('search') ?? 'No user provided';
+    const apiUrl = '' + search
     fetch(apiUrl, {
       "headers": {
       "sec-ch-ua": '"Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122"',}
