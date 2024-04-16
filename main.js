@@ -1,6 +1,6 @@
 // discord.js classes + token-config + path
 const { token } = require('./config.json');
-const {Client, Collection, GatewayIntentBits, Events, } = require('discord.js');
+const {Client, Collection, GatewayIntentBits, Events, Intents} = require('discord.js');
 const fs = require ('node:fs');
 const path = require('node:path');
 

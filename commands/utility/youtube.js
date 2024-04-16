@@ -1,22 +1,9 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { ytapi } = require('./config.json');
+const { ytapi } = require('../../config.json');
+const FuzzySearch = require('fuzzy-search');
+const axios = require('axios');
 
 // extraction from metadata
-function extractPercetile(userData, ) {
-  const segments = userData['data']['segments']
-  let percentile = -1;
-
-  for (var segment of segments) {
-    if (segment['type'] == 'overview'){
-        if(segment['stats']['rankScore']['percentile']){
-          percentile = segment['stats']['rankScore']['percentile'];
-          return percentile;
-      }
-    }
-  }
-  console.log('percentile:', percentile);
-  return;
-}
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -33,28 +20,15 @@ module.exports = {
   // api call  
 	async execute(interaction) {
     const search = interaction.options.getString('search') ?? 'No user provided';
-    const apiUrl = '' + search
-    fetch(apiUrl, {
-      "headers": {
-      "sec-ch-ua": '"Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122"',}
-    })
+    const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${search}&key=` + ytapi);
+    const videos = response.data.items.map(item => ({ title: item.snippet.title, url: `https://www.youtube.com/watch?v=${item.id.videoId}` }));
+    const searcher = new FuzzySearch(videos, ['title'], { caseSensitive: false });
+    const result = searcher.search(search);
 
-    .then(response => {
-      console.log("r", response)
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
-    })
-    .then(async userData => {
-      // Process the retrieved user data
-      let percentile = extractPercetile(userData,);
-      console.log(percentile);
-      console.log(typeof percentile);
-      await interaction.reply({ content: percentile.toString(), });
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-    },
-};
+    if (result.length > 0) {
+      await interaction.reply(`Top result: ${result[0].title} - ${result[0].url}`);
+    } else {
+      await interaction.reply('No results found');
+    }
+  },
+}
