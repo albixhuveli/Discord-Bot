@@ -66,3 +66,5 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 client.login(token);
+
+const port = process.env.PORT || 8080;
